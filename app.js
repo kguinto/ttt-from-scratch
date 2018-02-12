@@ -1,1 +1,5 @@
-console.log('init');
+console.log('Loaded tic-tac-toe app');
+
+
+
+

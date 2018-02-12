@@ -1,0 +1,25 @@
+body {
+  color: #222222;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background-color: #fefefe;
+}
+
+.header {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.row {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.place {
+  display: inline-block;
+  height: 5rem;
+  width: 5rem;
+  border: 1px solid #222222;
+}
