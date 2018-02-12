@@ -11,17 +11,29 @@ body {
 }
 
 .row {
-  display: block;
+  /* display: block; */
   text-align: center;
+  vertical-align: top;
   margin: 0;
+  margin-bottom: .2rem;
   padding: 0;
 }
 
 .place {
   display: inline-block;
+  vertical-align: top;
+
   height: 5rem;
   width: 5rem;
   border: 1px solid #222222;
+  margin: 0;
+  padding: 0;
+}
+
+.place.piece {
+  display: inline;
+  margin: 0;
+  font-size: 36px;
 }
 
 .ui#ui {
