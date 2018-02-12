@@ -2,14 +2,13 @@
   <title>Tic-Tac-Toe!</title>
   <link rel="stylesheet" type="text/css" href="./app.css">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
-  <script src="./app.js"></script>
 </head>
 <body>
   <div class="header">
     <h1>Tic-Tac-Toe!</h1>
   </div>
 
-  <div class="board">
+  <div class="board" id="board">
     <div class="row" id="row-A">
       <div class="place" id="place-A0"> </div>
       <div class="place" id="place-A1"> </div> 
@@ -28,5 +27,14 @@
       <div class="place" id="place-C2"> </div> 
     </div>
 
+    <div class="ui" id="ui">
+      <p class="ui-text">It's X's turn!</p>
+
+      <button href="#" class="Reset" id="reset-button">reset</button>
+    </div>
   </div>
+
+  <script src="./app.js">
+    window.onload(e);
+  </script>
 </body>

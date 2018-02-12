@@ -23,3 +23,8 @@ body {
   width: 5rem;
   border: 1px solid #222222;
 }
+
+.ui#ui {
+  text-align: center;
+  margin-top: 2rem;
+}
