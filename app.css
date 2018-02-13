@@ -27,6 +27,7 @@ body {
   height: 5rem;
   width: 5rem;
   border: 1px solid #222222;
+  background: #ffffff;
   margin: 0;
   padding: 0;
 
@@ -43,4 +44,24 @@ body {
 .ui#ui {
   text-align: center;
   margin-top: 2rem;
+}
+
+#big-x {
+  color: #ffe5e5;
+  font-size: 45rem;
+  position: fixed;
+  left: -10rem;
+  top: 4rem;
+  transform: rotate(30deg);
+  z-index: -1;
+}
+
+#big-o {
+  color:  #e6f0ff;
+  font-size: 45rem;
+  position: fixed;
+  right: -10rem;
+  top: 4rem;
+  transform: rotate(-30deg);
+  z-index: -1;
 }
