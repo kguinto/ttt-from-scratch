@@ -92,17 +92,24 @@ app.view = {
     document.getElementById('reset-button').addEventListener('click', (e)=>{
       e.preventDefault();
     });
-  
-    let places = document.getElementsByClassName('place');
-    
-    Array.from(places).forEach(place => {
-      app.view.renderPlace(place.id);
 
-      place.addEventListener('click', function (e) {
+
+
+    document.getElementById('board').addEventListener('click', (e) => {
+
+      if(e.target.className === 'place') {
+        place = e.target;
+
         if(app.model.getPiece(place.id) === 0){
           app.controller.makeMove(place.id);
         }
-      });
+      }
+    });
+  
+    let places = document.getElementsByClassName('place');
+
+    Array.from(places).forEach(place => {
+      app.view.renderPlace(place.id);
     });
 
     document.getElementById('reset-button').addEventListener('click', app.controller.reset);
