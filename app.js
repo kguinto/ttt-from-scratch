@@ -7,20 +7,32 @@ app.model = {
   turn : 0,
   rowMap: { 'A': 0, 'B': 1, 'C': 2 },
 
-  setPiece: function (piece, place) {
+  makeMove : function (piece, place) {
+    this.setPiece(piece, place);
+    this.turn++;
+        
+    if (this.turn % 2 === 0) {
+      uiText = `It's X's turn!`;
+    } else {
+      uiText = `It's O's turn!`;
+    };
+
+    app.view.renderUiText(uiText);
+    app.view.renderPlace(place);
+  },
+  
+  setPiece : function (piece, place) {
     if(place.length === 2 ) {
       let row = this.rowMap[place[0]];
       let column = place[1];
   
       this.board[row][column] = piece;
-  
-      app.view.renderPlace(place);
     } else {
       console.error("Improper use of setPiece");
     }
   },
 
-  getPiece: function(place) {
+  getPiece : function(place) {
 
     if(place.length === 2 ) {
       let row = this.rowMap[place[0]];
@@ -53,7 +65,7 @@ app.view = {
 
       place.addEventListener('click', function (e) {
         if(app.model.getPiece(place.id) === 0){
-          app.controller.setPiece(place.id);
+          app.controller.makeMove(place.id);
         }
       });
     });
@@ -83,7 +95,7 @@ app.controller = {
    *   piece -- Single character string 'X' or 'O'
    *   place -- Two character string representing the row and column ('A0', 'A1', 'A2', 'B0', etc....)
    */
-  setPiece: function (place) {
+  makeMove: function (place) {
     let model = app.model; //brevity
 
     let piece = (model.turn % 2) + 1; // places 1 (X) on even turns, 2 (O) on odd turns
@@ -91,8 +103,7 @@ app.controller = {
     console.log('setting piece', piece, 'at place', place);
     if(place.length === 2 ) {
 
-      model.setPiece(piece, place);
-      model.turn++;
+      model.makeMove(piece, place);
 
       console.table(model.board); // TODO delete
     } else {
@@ -101,7 +112,7 @@ app.controller = {
   },
 
   reset : () => {
-    
+
   }
 
 };
