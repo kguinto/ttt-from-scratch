@@ -97,8 +97,6 @@ app.view = {
       e.preventDefault();
     });
 
-
-
     document.getElementById('board').addEventListener('click', (e) => {
 
       if(e.target.className === 'place') {
@@ -142,15 +140,16 @@ app.controller = {
    *   place -- Two character string representing the row and column ('A0', 'A1', 'A2', 'B0', etc....)
    */
   makeMove: function (place) {
-    let model = app.model; //brevity
-    let piece = (model.turn % 2) + 1; // places 1 (X) on even turns, 2 (O) on odd turns
+    if(!app.model.gameEnded) {
+      let piece = (app.model.turn % 2) + 1; // places 1 (X) on even turns, 2 (O) on odd turns
 
-    if(place.length === 2 ) {
-
-      model.makeMove(piece, place);
-
-    } else {
-      console.error('Something went wrong. Incorrect usage of app.controller.setPiece function.');
+      if(place.length === 2 ) {
+  
+        app.model.makeMove(piece, place);
+  
+      } else {
+        console.error('Something went wrong. Incorrect usage of app.controller.setPiece function.');
+      }
     }
   },
 
