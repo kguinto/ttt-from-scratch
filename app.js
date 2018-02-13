@@ -5,6 +5,7 @@ app.model = {
   board: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
   turn : 0,
   rowMap: { 'A': 0, 'B': 1, 'C': 2 },
+  playerPieces: ['X', 'O'],
   gameEnded: false,
 
   makeMove : function (piece, place) {
@@ -16,9 +17,12 @@ app.model = {
 
     if (this.checkRow(row, piece) || this.checkColumn(column, piece) || this.checkMajor(piece) || this.checkMinor(piece)) {
       if (this.turn % 2 === 0) {
-        uiText = `X is the winner! O sucks!`;
+        uiText = `${this.playerPieces[0]} is the winner! ${this.playerPieces[1]} sucks!`;
       } else {
-        uiText = `O is the winner! X sucks!`;
+        uiText = `${this.playerPieces[1]} is the winner! ${this.playerPieces[0]} sucks!`;
+
+        // Switch starting player
+        this.playerPieces = [this.playerPieces[1], this.playerPieces[0]];
       };
 
       this.gameEnded = true;
@@ -34,9 +38,9 @@ app.model = {
         this.turn++;
 
         if (this.turn % 2 === 0) {
-          uiText = `It's X's turn!`;
+          uiText = `It's ${this.playerPieces[0]}'s turn!`;
         } else {
-          uiText = `It's O's turn!`;
+          uiText = `It's ${this.playerPieces[1]}'s turn!`;
         };
     
         app.view.renderUiText(uiText);
@@ -153,7 +157,7 @@ app.controller = {
   reset : () => {
     app.model.turn = 0;
     app.model.gameEnded = false;
-    uiText = `It's X's turn!`;
+    uiText = `It's ${app.model.playerPieces[0]}'s turn!`;
     app.view.renderUiText(uiText);
 
     ["A", "B", "C"].forEach(row => {
