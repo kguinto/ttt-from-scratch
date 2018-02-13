@@ -18,15 +18,15 @@ app.model = {
     };
 
     app.view.renderUiText(uiText);
-    app.view.renderPlace(place);
   },
-  
+
   setPiece : function (piece, place) {
     if(place.length === 2 ) {
       let row = this.rowMap[place[0]];
       let column = place[1];
   
       this.board[row][column] = piece;
+      app.view.renderPlace(place);
     } else {
       console.error("Improper use of setPiece");
     }
@@ -51,7 +51,7 @@ app.model = {
 app.view = {
   init : (e) => {
     console.log('Loaded tic-tac-toe app');
-    console.table(app.board);
+    console.table(app.model.board);
   
     document.getElementById('reset-button').addEventListener('click', (e)=>{
       e.preventDefault();
@@ -84,8 +84,8 @@ app.view = {
     let piece = pieceMap[app.model.getPiece(place)];
 
     document.getElementById(place).innerHTML = `<span class="piece">${piece}<span>`;
+  },
 
-  }
 };
 
 app.controller = {
@@ -112,7 +112,14 @@ app.controller = {
   },
 
   reset : () => {
+    app.model.turn = 0;
+    ["A", "B", "C"].forEach(row => {
+      [0, 1, 2].forEach(column => {
+        app.model.setPiece(0, row+column);
+      });
+    });
 
+    console.table(app.model.board);
   }
 
 };
