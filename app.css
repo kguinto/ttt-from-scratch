@@ -12,6 +12,7 @@ body {
 
 .row {
   /* display: block; */
+  background: transparent;
   text-align: center;
   vertical-align: top;
   margin: 0;
@@ -28,6 +29,8 @@ body {
   border: 1px solid #222222;
   margin: 0;
   padding: 0;
+
+  box-shadow: .1em .2em .5em #aaaaaa;
 }
 
 .place .piece {
