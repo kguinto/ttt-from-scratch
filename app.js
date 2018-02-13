@@ -88,12 +88,9 @@ app.model = {
 /* View */
 app.view = {
   init : (e) => {
-    console.log('Loaded tic-tac-toe app');
-    console.table(app.model.board);
   
     document.getElementById('reset-button').addEventListener('click', (e)=>{
       e.preventDefault();
-      console.log('Resetting board.');
     });
   
     let places = document.getElementsByClassName('place');
