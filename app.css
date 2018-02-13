@@ -30,7 +30,8 @@ body {
   padding: 0;
 }
 
-.place.piece {
+.place .piece {
+  vertical-align: 50%;
   display: inline;
   margin: 0;
   font-size: 36px;
