@@ -92,7 +92,6 @@ app.model = {
 /* View */
 app.view = {
   init : (e) => {
-  
     document.getElementById('reset-button').addEventListener('click', (e)=>{
       e.preventDefault();
     });
@@ -115,6 +114,12 @@ app.view = {
     });
 
     document.getElementById('reset-button').addEventListener('click', app.controller.reset);
+
+    document.addEventListener('keyup', function (e) {
+     if (e.keyCode === 32 && app.model.gameEnded) {
+       document.getElementById('reset-button').click();
+     }
+    });
 
     app.view.renderUiText(`It's X's turn!`);
   },
